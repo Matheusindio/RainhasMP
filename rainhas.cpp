@@ -94,3 +94,14 @@ int VerificaAtaque(const std::string &filename)
         {linha1, linha2, linha3, linha4, linha5, linha6, linha7, linha8};
 
     int attackSameLine[8] = {10, 10, 10, 10, 10, 10, 10, 10};
+
+    std::string ataques = ""; //  String para salvat ataques
+
+    for (int i = 0; i < 8; i++)
+    {
+        //  colocando lista em array de inteiros
+        countLine = 0;
+        for (int y = 0; y < 8; y++)
+        {
+            attackSameLine[y] = 10;
+        }
