@@ -291,3 +291,18 @@ int VerificaAtaque(const std::string &filename)
         }
     }
     return valueReturn;
+}
+
+int Verifica_solucao(const std::string &filename)
+{
+    int valor = VerificaAtaque(filename);
+
+    if (valor == -1)
+    {
+        cout << "-1" << endl;
+        return -1; //  matriz Inválida
+    }
+    if (valor == -2)
+    {
+        cout << "Erro ao abrir arquivo" << endl;
+    }
