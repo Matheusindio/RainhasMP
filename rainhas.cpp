@@ -200,3 +200,11 @@ int VerificaAtaque(const std::string &filename)
             }
         }
     }
+
+    //  verificacao diagonais direita
+    int cont = 0;
+    for (int i = 0; i < 8; i++)
+    {
+        for (int j = 0; j < 8; j++)
+        {
+            if (arrays[i][j] == 1)
