@@ -140,3 +140,20 @@ int VerificaAtaque(const std::string &filename)
                     }
                 }
             }
+            for (int b = 0; b < 7; b++)
+            {
+                if (attackSameLine[b] != 10 && attackSameLine[b + 1] != 10)
+                {
+                    ataques += std::to_string(i + 1);
+                    ataques += ",";
+                    ataques += std::to_string(attackSameLine[b] + 1);
+                    ataques += "            ";
+                    ataques += std::to_string(i + 1);
+                    ataques += ",";
+                    ataques += std::to_string(attackSameLine[b + 1] + 1);
+                    ataques += "\n";
+                    valueReturn = 0;
+                }
+            }
+        }
+    }
