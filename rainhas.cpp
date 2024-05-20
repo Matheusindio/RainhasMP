@@ -82,3 +82,15 @@ int VerificaAtaque(const std::string &filename)
     int arrayLine6[8];
     int arrayLine7[8];
     int arrayLine8[8];
+
+// convertendo
+    int countLine = 0;
+    int countTotal = 0;
+    int *arrays[] = {
+        arrayLine1, arrayLine2, arrayLine3, arrayLine4,
+        arrayLine5, arrayLine6, arrayLine7, arrayLine8};
+
+    vector<string> linhas =
+        {linha1, linha2, linha3, linha4, linha5, linha6, linha7, linha8};
+
+    int attackSameLine[8] = {10, 10, 10, 10, 10, 10, 10, 10};
