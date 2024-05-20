@@ -268,3 +268,13 @@ int VerificaAtaque(const std::string &filename)
             }
         }
     }
+    if (valueReturn == 0)
+    {
+        std::string nome = "ataques/ataques - ";
+        nome += filename;
+        std::string word = "tabuleiros/";
+        size_t pos = nome.find(word);
+        if (pos != std::string::npos)
+        {
+            nome.erase(pos, word.length());
+        }
