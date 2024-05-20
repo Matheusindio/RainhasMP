@@ -105,3 +105,20 @@ int VerificaAtaque(const std::string &filename)
         {
             attackSameLine[y] = 10;
         }
+
+        for (int j = 0; j < 8; j++)
+        {
+            if (linhas[i][j] - '0' == 1 || linhas[i][j] - '0' == 0)
+            {
+                arrays[i][j] = linhas[i][j] - '0';
+                if (arrays[i][j] == 1)
+                {
+                    countLine += 1;
+                    countTotal += 1;
+                }
+            }
+            else
+            {
+                return -1;
+            } //  caracter diferente de 1 e 0
+        }
