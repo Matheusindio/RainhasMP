@@ -72,3 +72,13 @@ int VerificaAtaque(const std::string &filename)
         return -1;
     }
     arquivo.close();
+
+    int valueReturn = 1;
+    int arrayLine1[8]; 
+    int arrayLine2[8];
+    int arrayLine3[8];
+    int arrayLine4[8];
+    int arrayLine5[8]; //  Armazenando os primeiros numeros
+    int arrayLine6[8];
+    int arrayLine7[8];
+    int arrayLine8[8];
