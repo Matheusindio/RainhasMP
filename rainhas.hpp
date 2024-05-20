@@ -9,6 +9,6 @@
 -1 caso a entradsa não seja válida
 filename vai corresponder ao arquivo .txt que tem os tabuleiros
 */
-int verifica_solucao(const std::string& filename);
+int Verifica_solucao(const std::string& filename);
 
 #endif  // RAINHAS_HPP_
