@@ -38,3 +38,15 @@ int VerificaTabuleiro(const std::string& myinput) {
 
     return 1;
 }
+
+/*VerificaAtaque vai analisar possíveis ataques entre as rainhas, pelas diagonais, colunas e linhas*/
+int VerificaAtaque(const std::string &filename)
+{
+    if (VerificaTabuleiro(filename) == -1)
+    {
+        return -1;
+    }
+    if (VerificaTabuleiro(filename) == -11)
+    {
+        return -11;
+    }
