@@ -17,4 +17,16 @@ int VerificaTabuleiro(const std::string& myinput) {
     if (!arquivo) {
         return -11;
     }
-    
+
+    int Qletra = 0;
+    int Qnume = 0;
+    char carac;
+
+    while (arquivo.get(carac)) {
+        if (isalpha(carac)) {
+            Qletra++;
+        } else if (isdigit(carac)) {
+            Qnume++;
+        }
+
+}
