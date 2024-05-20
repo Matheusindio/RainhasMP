@@ -50,3 +50,25 @@ int VerificaAtaque(const std::string &filename)
     {
         return -11;
     }
+
+    std::ifstream arquivo(filename);
+
+    std::string linha1, linha2, linha3, linha4, linha5, linha6, linha7, linha8;
+    std::string linhaExtra;
+
+    if (std::getline(arquivo, linha1) &&
+        std::getline(arquivo, linha2) &&
+        std::getline(arquivo, linha3) &&
+        std::getline(arquivo, linha4) &&
+        std::getline(arquivo, linha5) &&
+        std::getline(arquivo, linha6) &&
+        std::getline(arquivo, linha7) &&
+        std::getline(arquivo, linha8) &&
+        !std::getline(arquivo, linhaExtra))
+    {
+    }
+    else
+    {
+        return -1;
+    }
+    arquivo.close();
