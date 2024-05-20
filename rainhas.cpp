@@ -28,5 +28,13 @@ int VerificaTabuleiro(const std::string& myinput) {
         } else if (isdigit(carac)) {
             Qnume++;
         }
+    }
 
+    if (Qnume != 64 && Qletra != 0) {
+        return -1;
+    }
+
+    arquivo.close();
+
+    return 1;
 }
