@@ -174,3 +174,29 @@ int VerificaAtaque(const std::string &filename)
                 shouldBreak = false;
                 for (int y = i; y < 8; y++)
                 {
+                    for (int x = j; x < 8; x++)
+                    {
+                        if (arrays[y][x] == 1 && i != y && x == j)
+                        {
+                            ataques += std::to_string(i + 1);
+                            ataques += ",";
+                            ataques += std::to_string(j + 1);
+                            ataques += "            ";
+                            ataques += std::to_string(y + 1);
+                            ataques += ",";
+                            ataques += std::to_string(x + 1);
+                            ataques += "\n";
+
+                            valueReturn = 0;
+                            shouldBreak = true;
+                            break;
+                        }
+                    }
+                    if (shouldBreak)
+                    {
+                        break;
+                    }
+                }
+            }
+        }
+    }
