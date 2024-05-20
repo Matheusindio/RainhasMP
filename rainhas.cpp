@@ -241,3 +241,30 @@ int VerificaAtaque(const std::string &filename)
     {
         for (int j = 0; j < 8; j++)
         {
+            if (arrays[i][j] == 1)
+            {
+                cont = 1;
+                for (int y = i + 1; y < 8; y++)
+                {
+                    if (j - cont < 0)
+                    {
+                        break;
+                    }
+                    if (arrays[y][j - cont] == 1)
+                    {
+                        ataques += std::to_string(i + 1);
+                        ataques += ",";
+                        ataques += std::to_string(j + 1);
+                        ataques += "            ";
+                        ataques += std::to_string(y + 1);
+                        ataques += ",";
+                        ataques += std::to_string(j - cont + 1);
+                        ataques += "\n";
+                        valueReturn = 0;
+                        break;
+                    }
+                    cont += 1;
+                }
+            }
+        }
+    }
