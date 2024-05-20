@@ -278,3 +278,16 @@ int VerificaAtaque(const std::string &filename)
         {
             nome.erase(pos, word.length());
         }
+
+        std::ofstream file(nome);
+        if (file.is_open())
+        {
+            file << ataques;
+            file.close();
+        }
+        else
+        {
+            std::cerr << "Erro ao criar o arquivo: " << nome << std::endl;
+        }
+    }
+    return valueReturn;
