@@ -122,3 +122,21 @@ int VerificaAtaque(const std::string &filename)
                 return -1;
             } //  caracter diferente de 1 e 0
         }
+
+        //  Ataque em linha
+        if (countLine >= 2)
+        {
+            for (int x = 0; x < 8; x++)
+            {
+                if (arrays[i][x] == 1)
+                {
+                    for (int a = 0; a < 8; a++)
+                    {
+                        if (attackSameLine[a] == 10)
+                        {
+                            attackSameLine[a] = x;
+                            break;
+                        }
+                    }
+                }
+            }
