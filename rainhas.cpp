@@ -157,3 +157,8 @@ int VerificaAtaque(const std::string &filename)
             }
         }
     }
+    
+    if (countTotal > 8 || countTotal < 8)
+    { //  mais ou menos de 8 rainhas
+        return -1;
+    }
