@@ -157,8 +157,20 @@ int VerificaAtaque(const std::string &filename)
             }
         }
     }
-    
+
     if (countTotal > 8 || countTotal < 8)
     { //  mais ou menos de 8 rainhas
         return -1;
     }
+
+    //  verificacao colunas
+    bool shouldBreak = false;
+    for (int i = 0; i < 8; i++)
+    {
+        for (int j = 0; j < 8; j++)
+        {
+            if (arrays[i][j] == 1)
+            {
+                shouldBreak = false;
+                for (int y = i; y < 8; y++)
+                {
