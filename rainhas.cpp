@@ -306,3 +306,16 @@ int Verifica_solucao(const std::string &filename)
     {
         cout << "Erro ao abrir arquivo" << endl;
     }
+    if (valor == 0)
+    { //  Problema que nao e solução
+        cout << "0" << endl;
+        return 0;
+    }
+    if (valor == 1)
+    { //  problema que satisfaz as 8 rainhas
+        cout << "1" << endl;
+        return 1;
+    }
+
+    return -1;
+}
