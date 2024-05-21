@@ -1,0 +1,38 @@
+\hypertarget{testa__rainhas_8cpp}{}\doxysection{testa\+\_\+rainhas.\+cpp File Reference}
+\label{testa__rainhas_8cpp}\index{testa\_rainhas.cpp@{testa\_rainhas.cpp}}
+{\ttfamily \#include \char`\"{}rainhas.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}catch.\+hpp\char`\"{}}\newline
+Include dependency graph for testa\+\_\+rainhas.\+cpp\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{testa__rainhas_8cpp_aca9be0bcff3c74409f8f2ffa7e4d3947}{T\+E\+S\+T\+\_\+\+C\+A\+SE}} (\char`\"{}solucoes invalidas para o problema\char`\"{}, \char`\"{}\mbox{[}rainhas\mbox{]}\char`\"{})
+\item 
+\mbox{\hyperlink{testa__rainhas_8cpp_ae803d98119eb0b1517f71aded4b3e359}{T\+E\+S\+T\+\_\+\+C\+A\+SE}} (\char`\"{}solucoes validas para o problema\char`\"{}, \char`\"{}\mbox{[}rainhas\mbox{]}\char`\"{})
+\item 
+\mbox{\hyperlink{testa__rainhas_8cpp_a22c62394863e04915e3adfc2399cacbe}{T\+E\+S\+T\+\_\+\+C\+A\+SE}} (\char`\"{}matriz invalida para o problema\char`\"{}, \char`\"{}\mbox{[}rainhas\mbox{]}\char`\"{})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{testa__rainhas_8cpp_a22c62394863e04915e3adfc2399cacbe}\label{testa__rainhas_8cpp_a22c62394863e04915e3adfc2399cacbe}} 
+\index{testa\_rainhas.cpp@{testa\_rainhas.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testa\_rainhas.cpp@{testa\_rainhas.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily T\+E\+S\+T\+\_\+\+C\+A\+SE (\begin{DoxyParamCaption}\item[{\char`\"{}matriz invalida para o problema\char`\"{}}]{,  }\item[{\char`\"{}\char`\"{}}]{\mbox{[}rainhas\mbox{]} }\end{DoxyParamCaption})}
+
+T\+E\+S\+T\+\_\+\+C\+A\+SE -\/ casos com invalidez \mbox{\Hypertarget{testa__rainhas_8cpp_aca9be0bcff3c74409f8f2ffa7e4d3947}\label{testa__rainhas_8cpp_aca9be0bcff3c74409f8f2ffa7e4d3947}} 
+\index{testa\_rainhas.cpp@{testa\_rainhas.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testa\_rainhas.cpp@{testa\_rainhas.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily T\+E\+S\+T\+\_\+\+C\+A\+SE (\begin{DoxyParamCaption}\item[{\char`\"{}solucoes invalidas para o problema\char`\"{}}]{,  }\item[{\char`\"{}\char`\"{}}]{\mbox{[}rainhas\mbox{]} }\end{DoxyParamCaption})}
+
+T\+E\+S\+T\+\_\+\+C\+A\+SE -\/ casos sem solução Verifica\+\_\+solucao será a função que responderá os requisitos do problema ~\newline
+ \mbox{\Hypertarget{testa__rainhas_8cpp_ae803d98119eb0b1517f71aded4b3e359}\label{testa__rainhas_8cpp_ae803d98119eb0b1517f71aded4b3e359}} 
+\index{testa\_rainhas.cpp@{testa\_rainhas.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testa\_rainhas.cpp@{testa\_rainhas.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily T\+E\+S\+T\+\_\+\+C\+A\+SE (\begin{DoxyParamCaption}\item[{\char`\"{}solucoes validas para o problema\char`\"{}}]{,  }\item[{\char`\"{}\char`\"{}}]{\mbox{[}rainhas\mbox{]} }\end{DoxyParamCaption})}
+
+T\+E\+S\+T\+\_\+\+C\+A\+SE -\/ casos com solução 

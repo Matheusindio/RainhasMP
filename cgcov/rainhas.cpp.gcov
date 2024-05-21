@@ -1,0 +1,322 @@
+        -:    0:Source:rainhas.cpp
+        -:    1:/*Aqui o código principal*/
+        -:    2:
+        -:    3:#include <iostream>
+        -:    4:#include <fstream>
+        -:    5:#include <string>
+        -:    6:#include <vector>
+        -:    7:#include <algorithm>
+        -:    8:#include <cstdio>
+        -:    9:using std::cout; using std::cin;
+        -:   10:using std::endl; using std::string;
+        -:   11:using std::vector;
+        -:   12:
+        -:   13:/*Função VerificaTabuleiro verifica se o tabuleiro é válido, retornando -11 se o arquivo tem problema, -1 se é um tabuleiro inválido e 0 se é válido*/
+       60:   14:int VerificaTabuleiro(const std::string& myinput) {
+      120:   15:    std::ifstream arquivo(myinput);
+        -:   16:
+       60:   17:    if (!arquivo) {
+    #####:   18:        return -11;
+        -:   19:    }
+        -:   20:
+       60:   21:    int Qletra = 0;
+       60:   22:    int Qnume = 0;
+        -:   23:    char carac;
+        -:   24:
+     4414:   25:    while (arquivo.get(carac)) {
+     4354:   26:        if (isalpha(carac)) {
+       48:   27:            Qletra++;
+     4306:   28:        } else if (isdigit(carac)) {
+     3790:   29:            Qnume++;
+        -:   30:        }
+        -:   31:    }
+        -:   32:
+       60:   33:    if (Qnume != 64 && Qletra != 0) {
+        4:   34:        return -1;
+        -:   35:    }
+        -:   36:
+       56:   37:    arquivo.close();
+        -:   38:
+       56:   39:    return 1;
+        -:   40:}
+        -:   41:
+        -:   42:/*VerificaAtaque vai analisar possíveis ataques entre as rainhas, pelas diagonais, colunas e linhas*/
+       32:   43:int VerificaAtaque(const std::string &filename)
+        -:   44:{
+       32:   45:    if (VerificaTabuleiro(filename) == -1)
+        -:   46:    {
+        4:   47:        return -1;
+        -:   48:    }
+       28:   49:    if (VerificaTabuleiro(filename) == -11)
+        -:   50:    {
+    #####:   51:        return -11;
+        -:   52:    }
+        -:   53:
+       56:   54:    std::ifstream arquivo(filename);
+        -:   55:
+       56:   56:    std::string linha1, linha2, linha3, linha4, linha5, linha6, linha7, linha8;
+       56:   57:    std::string linhaExtra;
+        -:   58:
+       28:   59:    if (std::getline(arquivo, linha1) &&
+       56:   60:        std::getline(arquivo, linha2) &&
+       28:   61:        std::getline(arquivo, linha3) &&
+       28:   62:        std::getline(arquivo, linha4) &&
+       28:   63:        std::getline(arquivo, linha5) &&
+       28:   64:        std::getline(arquivo, linha6) &&
+       28:   65:        std::getline(arquivo, linha7) &&
+       83:   66:        std::getline(arquivo, linha8) &&
+       27:   67:        !std::getline(arquivo, linhaExtra))
+        -:   68:    {
+        -:   69:    }
+        -:   70:    else
+        -:   71:    {
+        2:   72:        return -1;
+        -:   73:    }
+       26:   74:    arquivo.close();
+        -:   75:
+       26:   76:    int valueReturn = 1;
+        -:   77:    int arrayLine1[8]; 
+        -:   78:    int arrayLine2[8];
+        -:   79:    int arrayLine3[8];
+        -:   80:    int arrayLine4[8];
+        -:   81:    int arrayLine5[8]; //  Armazenando os primeiros numeros
+        -:   82:    int arrayLine6[8];
+        -:   83:    int arrayLine7[8];
+        -:   84:    int arrayLine8[8];
+        -:   85:
+        -:   86:// convertendo
+       26:   87:    int countLine = 0;
+       26:   88:    int countTotal = 0;
+        -:   89:    int *arrays[] = {
+        -:   90:        arrayLine1, arrayLine2, arrayLine3, arrayLine4,
+       26:   91:        arrayLine5, arrayLine6, arrayLine7, arrayLine8};
+        -:   92:
+        -:   93:    vector<string> linhas =
+      286:   94:        {linha1, linha2, linha3, linha4, linha5, linha6, linha7, linha8};
+        -:   95:
+       26:   96:    int attackSameLine[8] = {10, 10, 10, 10, 10, 10, 10, 10};
+        -:   97:
+       52:   98:    std::string ataques = ""; //  String para salvat ataques
+        -:   99:
+      229:  100:    for (int i = 0; i < 8; i++)
+        -:  101:    {
+        -:  102:        //  colocando lista em array de inteiros
+      205:  103:        countLine = 0;
+     1845:  104:        for (int y = 0; y < 8; y++)
+        -:  105:        {
+     1640:  106:            attackSameLine[y] = 10;
+        -:  107:        }
+        -:  108:
+     1841:  109:        for (int j = 0; j < 8; j++)
+        -:  110:        {
+     1638:  111:            if (linhas[i][j] - '0' == 1 || linhas[i][j] - '0' == 0)
+        -:  112:            {
+     1636:  113:                arrays[i][j] = linhas[i][j] - '0';
+     1636:  114:                if (arrays[i][j] == 1)
+        -:  115:                {
+      188:  116:                    countLine += 1;
+      188:  117:                    countTotal += 1;
+        -:  118:                }
+        -:  119:            }
+        -:  120:            else
+        -:  121:            {
+        2:  122:                return -1;
+        -:  123:            } //  caracter diferente de 1 e 0
+        -:  124:        }
+        -:  125:
+        -:  126:        //  Ataque em linha
+      203:  127:        if (countLine >= 2)
+        -:  128:        {
+       63:  129:            for (int x = 0; x < 8; x++)
+        -:  130:            {
+       56:  131:                if (arrays[i][x] == 1)
+        -:  132:                {
+       54:  133:                    for (int a = 0; a < 8; a++)
+        -:  134:                    {
+       54:  135:                        if (attackSameLine[a] == 10)
+        -:  136:                        {
+       20:  137:                            attackSameLine[a] = x;
+       20:  138:                            break;
+        -:  139:                        }
+        -:  140:                    }
+        -:  141:                }
+        -:  142:            }
+       56:  143:            for (int b = 0; b < 7; b++)
+        -:  144:            {
+       49:  145:                if (attackSameLine[b] != 10 && attackSameLine[b + 1] != 10)
+        -:  146:                {
+       13:  147:                    ataques += std::to_string(i + 1);
+       13:  148:                    ataques += ",";
+       13:  149:                    ataques += std::to_string(attackSameLine[b] + 1);
+       13:  150:                    ataques += "            ";
+       13:  151:                    ataques += std::to_string(i + 1);
+       13:  152:                    ataques += ",";
+       13:  153:                    ataques += std::to_string(attackSameLine[b + 1] + 1);
+       13:  154:                    ataques += "\n";
+       13:  155:                    valueReturn = 0;
+        -:  156:                }
+        -:  157:            }
+        -:  158:        }
+        -:  159:    }
+        -:  160:
+       24:  161:    if (countTotal > 8 || countTotal < 8)
+        -:  162:    { //  mais ou menos de 8 rainhas
+        2:  163:        return -1;
+        -:  164:    }
+        -:  165:
+        -:  166:    //  verificacao colunas
+       22:  167:    bool shouldBreak = false;
+      198:  168:    for (int i = 0; i < 8; i++)
+        -:  169:    {
+     1584:  170:        for (int j = 0; j < 8; j++)
+        -:  171:        {
+     1408:  172:            if (arrays[i][j] == 1)
+        -:  173:            {
+      176:  174:                shouldBreak = false;
+      967:  175:                for (int y = i; y < 8; y++)
+        -:  176:                {
+     4510:  177:                    for (int x = j; x < 8; x++)
+        -:  178:                    {
+     3719:  179:                        if (arrays[y][x] == 1 && i != y && x == j)
+        -:  180:                        {
+       16:  181:                            ataques += std::to_string(i + 1);
+       16:  182:                            ataques += ",";
+       16:  183:                            ataques += std::to_string(j + 1);
+       16:  184:                            ataques += "            ";
+       16:  185:                            ataques += std::to_string(y + 1);
+       16:  186:                            ataques += ",";
+       16:  187:                            ataques += std::to_string(x + 1);
+       16:  188:                            ataques += "\n";
+        -:  189:
+       16:  190:                            valueReturn = 0;
+       16:  191:                            shouldBreak = true;
+       16:  192:                            break;
+        -:  193:                        }
+        -:  194:                    }
+      807:  195:                    if (shouldBreak)
+        -:  196:                    {
+       16:  197:                        break;
+        -:  198:                    }
+        -:  199:                }
+        -:  200:            }
+        -:  201:        }
+        -:  202:    }
+        -:  203:
+        -:  204:    //  verificacao diagonais direita
+       22:  205:    int cont = 0;
+      198:  206:    for (int i = 0; i < 8; i++)
+        -:  207:    {
+     1584:  208:        for (int j = 0; j < 8; j++)
+        -:  209:        {
+     1408:  210:            if (arrays[i][j] == 1)
+        -:  211:            {
+      176:  212:                cont = 1;
+      489:  213:                for (int y = i + 1; y < 8; y++)
+        -:  214:                {
+      416:  215:                    if (j + cont >= 8)
+        -:  216:                    {
+       63:  217:                        break;
+        -:  218:                    }
+      353:  219:                    if (arrays[y][j + cont] == 1)
+        -:  220:                    {
+       40:  221:                        ataques += std::to_string(i + 1);
+       40:  222:                        ataques += ",";
+       40:  223:                        ataques += std::to_string(j + 1);
+       40:  224:                        ataques += "            ";
+       40:  225:                        ataques += std::to_string(y + 1);
+       40:  226:                        ataques += ",";
+       40:  227:                        ataques += std::to_string(j + cont + 1);
+       40:  228:                        ataques += "\n";
+       40:  229:                        valueReturn = 0;
+       40:  230:                        break;
+        -:  231:                    }
+      313:  232:                    cont += 1;
+        -:  233:                }
+        -:  234:            }
+        -:  235:        }
+        -:  236:    }
+        -:  237:
+        -:  238:    //  verificacao diagonais esquerda
+       22:  239:    cont = 0;
+      198:  240:    for (int i = 0; i < 8; i++)
+        -:  241:    {
+     1584:  242:        for (int j = 0; j < 8; j++)
+        -:  243:        {
+     1408:  244:            if (arrays[i][j] == 1)
+        -:  245:            {
+      176:  246:                cont = 1;
+      505:  247:                for (int y = i + 1; y < 8; y++)
+        -:  248:                {
+      425:  249:                    if (j - cont < 0)
+        -:  250:                    {
+       74:  251:                        break;
+        -:  252:                    }
+      351:  253:                    if (arrays[y][j - cont] == 1)
+        -:  254:                    {
+       22:  255:                        ataques += std::to_string(i + 1);
+       22:  256:                        ataques += ",";
+       22:  257:                        ataques += std::to_string(j + 1);
+       22:  258:                        ataques += "            ";
+       22:  259:                        ataques += std::to_string(y + 1);
+       22:  260:                        ataques += ",";
+       22:  261:                        ataques += std::to_string(j - cont + 1);
+       22:  262:                        ataques += "\n";
+       22:  263:                        valueReturn = 0;
+       22:  264:                        break;
+        -:  265:                    }
+      329:  266:                    cont += 1;
+        -:  267:                }
+        -:  268:            }
+        -:  269:        }
+        -:  270:    }
+       22:  271:    if (valueReturn == 0)
+        -:  272:    {
+       32:  273:        std::string nome = "ataques/ataques - ";
+       16:  274:        nome += filename;
+       32:  275:        std::string word = "tabuleiros/";
+       16:  276:        size_t pos = nome.find(word);
+       16:  277:        if (pos != std::string::npos)
+        -:  278:        {
+       15:  279:            nome.erase(pos, word.length());
+        -:  280:        }
+        -:  281:
+       32:  282:        std::ofstream file(nome);
+       16:  283:        if (file.is_open())
+        -:  284:        {
+       16:  285:            file << ataques;
+       16:  286:            file.close();
+        -:  287:        }
+        -:  288:        else
+        -:  289:        {
+    #####:  290:            std::cerr << "Erro ao criar o arquivo: " << nome << std::endl;
+        -:  291:        }
+        -:  292:    }
+       22:  293:    return valueReturn;
+        -:  294:}
+        -:  295:
+       32:  296:int Verifica_solucao(const std::string &filename)
+        -:  297:{
+       32:  298:    int valor = VerificaAtaque(filename);
+        -:  299:
+       32:  300:    if (valor == -1)
+        -:  301:    {
+       10:  302:        cout << "-1" << endl;
+       10:  303:        return -1; //  matriz Inválida
+        -:  304:    }
+       22:  305:    if (valor == -2)
+        -:  306:    {
+    #####:  307:        cout << "Erro ao abrir arquivo" << endl;
+        -:  308:    }
+       22:  309:    if (valor == 0)
+        -:  310:    { //  Problema que nao e solução
+       16:  311:        cout << "0" << endl;
+       16:  312:        return 0;
+        -:  313:    }
+        6:  314:    if (valor == 1)
+        -:  315:    { //  problema que satisfaz as 8 rainhas
+        6:  316:        cout << "1" << endl;
+        6:  317:        return 1;
+        -:  318:    }
+        -:  319:
+    #####:  320:    return -1;
+        -:  321:}

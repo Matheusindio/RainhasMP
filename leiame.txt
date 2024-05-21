@@ -1,0 +1,4 @@
+Para compilar o código baste ter o compilador de c++,
+e as ferramentas solicitadas no trabalho,
+digite "make" para rodar o código
+digite "make [ferramenta]", como make gcov para verificar a cobertura.
